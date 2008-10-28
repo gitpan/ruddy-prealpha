@@ -1,0 +1,72 @@
+<!-- 
+   Ruddy pre-alpha-0.1.0 
+   Copyright (C) 2008, The Parrot Foundation.
+   $Id: index.html 1 2008-10-27 09:07:00 igor $
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">           
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<script type="text/javascript" src="jquery.js"></script>
+
+<link href="styles.css" rel="stylesheet" type="text/css" />
+<title>Ejemplo sencillo de Ajax</title>
+<script language="Javascript">
+
+$(document).ready(function(){
+
+   $("#out").html("<textarea cols=40 rows=2 wrap=soft></textarea>");
+   $("#generate").click(function() {
+      var seri = $("textarea").val();//serialize();
+      //var str = $('div[name="bot"] textarea[name="texto"]').val();
+      var mihtml = $.ajax({
+            type: "POST",
+            dataType: "text",
+            url: "http://www.dove.ruf/cgi-bin/write.pl",
+            data: "name=" + seri,
+            async: false
+            }).responseText;
+
+      //$("#bot").load("http://www.dove.ruf/cgi-bin/res.cgi");
+      $("#quote").text(seri);
+      //$("#out").html("<textarea>"+ str  +"</textarea>");
+      $("#out").html("<textarea cols=40 rows=2 wrap=soft>"+ mihtml  +"</textarea>");
+   });
+   $("#clear").click(function() {
+       $.ajax({
+            type: "POST",
+            dataType: "text",
+            url: "http://www.dove.ruf/cgi-bin/write.pl",
+            data: "name=clear",
+            async: false
+            });
+       $("#out").html("<textarea cols=40 rows=2 wrap=soft></textarea>");
+   });
+});
+</script>
+<style>
+  body, select { font-size:12px; }
+  form { margin:5px; }
+  p { color:red; margin:5px; font-size:14px; }
+  b { color:blue; }
+</style>
+</head>
+<body id="inicio">
+  <div id="wrapper">
+    <div id="header">
+      <h1>Ruddy</h1>
+      <h4>A nntp/rss reader<h4>
+    </div> <!-- End header-->
+    <div id="text_area">
+      <div id="out"></div>
+      <input type="submit" id="generate" value="Save">
+      <input type="button" id="clear" value="Clear"><br />
+    </div> <!-- End textarea-->
+      <div id="footer">
+        Ruddy &middot; Copyright (c) 2008 &middot; The Parrot Foundation
+      </div> <!-- End footer-->
+    </div> <!-- End header-->
+  </div> <!-- End wrapper -->
+</body>
+</html>
+

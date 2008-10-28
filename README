@@ -1,0 +1,41 @@
+This is Ruddy, version pre-alpha-0.1.0
+------------------------------
+
+Ruddy is Copyright (C) 2008, The Parrot Foundation
+
+LICENSE INFORMATION
+-------------------
+
+This code is distributed under the terms of the Artistic License 2.0.
+For more details, see the full text of the license in the file LICENSE.
+
+PREREQUISITES
+-------------
+
+You need: 
+Perl installed
+A web server instaled for Perl CGI.
+jquery
+
+
+INSTRUCTIONS
+------------
+
+For now, unpack your Ruddy tarball.
+
+copy perl(.pl) file to cgi-bin directory
+
+copy the other files to docs directory
+
+create bit.txt file into docs directory with 755 permissions
+
+Ruddy only saves contents of the page into a text file bit.txt
+usung ajax to communicate jquery with perl.
+
+FEEDBACK, BUGS
+--------------
+
+For bugs reporting please contact to quevlar@ymail.com
+
+
+
